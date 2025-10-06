@@ -5,7 +5,7 @@ import cv2
 model = YOLO("best_int8_openvino_model", task="detect")
 
 # Open the video file
-video_path = "balloon.mp4"
+video_path = "goldfish_480p_10s.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # Loop through the video frames
