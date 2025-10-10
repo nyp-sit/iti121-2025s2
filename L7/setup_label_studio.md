@@ -214,7 +214,22 @@ Now select the label `'goldfish 1'` below, and type `goldfish` in the prompt tex
 
 You should see the following after a while: 
 
-![label result](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/label_result.png?raw=true)
+![label result](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/label_result.png?raw=True)
+
+Togge the accept button to accept the suggested annotation (alternatively you can just click the green tick to accept all suggestions). 
+
+The bounding box will change to solid color (in this case our label color is green) and you can then click Submit button to submit the labelling to complete the labelling process for this image. 
+
+![final result](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/final_result.png?raw=True)
+
+
+
+
+
+
+
+
+
 
 
 
