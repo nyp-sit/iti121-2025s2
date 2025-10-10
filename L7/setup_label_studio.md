@@ -201,5 +201,18 @@ Now navigate to *Annotation*. In *Annotation* settings, toggle on *Use predictio
 ![annotation settings](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/annotation_settings.png?raw=true)
 
 
+# Auto-Labelling using Grounding Dino
+
+Now you can try out the auto-labelling using Grounding Dino you setup earlier. Open the Project and select any image to label.  
+
+
+[ imasge ] ()
+
+Make sure the *Auto-Annotation* is enabled. You can also optionally toggle on *Auto-accept Suggestions*. 
+
+Now select the label `'goldfish 1'` below, and type `goldfish` in the prompt text box.  Click *Add* button.  Now wait for the predictions to be returned from backend (you should see a loading spinner at the bottom of the screen while waiting for backend prediction). 
+
+
+
 
 
