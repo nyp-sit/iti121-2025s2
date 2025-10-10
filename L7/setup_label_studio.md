@@ -89,7 +89,7 @@ In the Labelling UI setup, choose `Code` option and paste the following into the
   <TextArea name="prompt" toName="image" editable="true" maxSubmissions="1" showSubmitButton="true" rows="2"/>
   <Image name="image" value="$image"/>
   <RectangleLabels name="label" toName="image">
-    <Label value="apple" background="yellow"/>
+    <Label value="goldfish" background="yellow"/>
   </RectangleLabels>
 </View>
 
@@ -124,7 +124,7 @@ Now go to your Accounts & Settings (found on the top right corner), then navigat
 Copy the token to be used later when you are setting up the ML backend. 
 
 
-# Integration with Machine Learning Backend using Grounding Dino 
+# Machine Learning Backend
 
 [Grounding Dino](https://github.com/IDEA-Research/GroundingDINO) is is a zero-shot object detection model. We can use the model to help us annotate our images. 
 
@@ -168,6 +168,11 @@ docker-compose up
 ```
 
 Now the ML backend server is started and listen on port 9090. 
+
+
+### Change of IP address
+
+If your ip address changes (which happens when you connect your laptop to different wifi), you can update the ip address in the docker-compose.yaml and just stop the current container (CTRL-C) and restart the container using `docker-compose up`. 
 
 
 # Integrate Label Studio with Machine Learning Backend 
