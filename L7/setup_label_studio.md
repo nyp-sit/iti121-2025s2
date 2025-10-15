@@ -175,6 +175,31 @@ Now the ML backend server is started and listen on port 9090.
 If your ip address changes (which happens when you connect your laptop to different wifi), you can update the ip address in the docker-compose.yaml and just stop the current container (CTRL-C) and restart the container using `docker-compose up`. 
 
 
+### (Alternative) Run the pre-built docker directly
+
+You can also run a pre-built docker directly.  First you need to create an environment file that contains the following environment variables: 
+
+```
+MODEL_DIR=/data/models
+WORKERS=2
+THREADS=4
+LOG_LEVEL=DEBUG
+
+# change the following to your local ip address
+LABEL_STUDIO_HOST=http://<YOUR IP>:8080
+# change the following to the access token you created in label studio
+LABEL_STUDIO_ACCESS_TOKEN=<YOUR TOKEN>
+BOX_THRESHOLD=0.30
+TEXT_THRESHOLD=0.25
+```
+
+and the run the docker by typing the following command: 
+
+```bash
+docker run docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-master
+```
+
+
 # Integrate Label Studio with Machine Learning Backend 
 
 Open the project, and click "settings" on the top right corner.
