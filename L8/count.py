@@ -1,16 +1,13 @@
 import cv2
 from ultralytics import solutions
 
-from ultralytics.utils.downloads import safe_download
-
-safe_download("https://github.com/ultralytics/notebooks/releases/download/v0.0.0/solutions-ci-demo.mp4")
-# cap = cv2.VideoCapture("solutions-ci-demo.mp4")
+# Open the video file
 cap = cv2.VideoCapture("goldfish_2m.mp4")
 if not cap.isOpened():
     print(f"Error: Could not open video file")
     exit(-1)
     
-    # Get video properties
+# Get video properties
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fps = int(cap.get(cv2.CAP_PROP_FPS))
@@ -37,21 +34,6 @@ counter = solutions.ObjectCounter(
         show_out=True
     )
 
-# video_writer = cv2.VideoWriter(
-#     "output.mp4",
-#     cv2.VideoWriter_fourcc(*"mp4v"),
-#     fps,
-#     (int(w), int(h)),
-# )
-
-# counter = solutions.ObjectCounter(
-#     show=True,
-#     region=region_points,
-#     model="fish_detect.pt",
-#     classes=[0])
-#     # line_width=5,
-#     # show_in=True)
-
 while cap.isOpened():
     ret, frame = cap.read()
     
@@ -60,27 +42,8 @@ while cap.isOpened():
 
     results = counter(frame)
     annotated_frame = results.plot_im
-
-    # Draw detection count on the annotated frame
-    # try:
-    #     detection_count = 0
-    #     if hasattr(results, "boxes") and results.boxes is not None:
-    #         detection_count = len(results.boxes)
-    # except Exception:
-    #     detection_count = 0
-
-    # cv2.putText(
-    #     annotated_frame,
-    #     f"Count: {detection_count}",
-    #     (20, 40),
-    #     cv2.FONT_HERSHEY_SIMPLEX,
-    #     1.0,
-    #     (0, 255, 0),
-    #     2,
-    #     cv2.LINE_AA,
-    # )
-
-        # Display the annotated frame
+    
+    # Display the annotated frame
     cv2.imshow("YOLO11 Tracking", annotated_frame)
 
     # Break the loop if 'q' is pressed
