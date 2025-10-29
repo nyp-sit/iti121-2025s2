@@ -9,8 +9,8 @@ We will use flask server to host the activity recognition model that we train. T
 If you already have Anaconda or Miniconda installed, create a conda environment by typing the following at the Anaconda prompt:
 
 ```python
-conda create -n it3103env python=3.8
-conda activate it3103env 
+conda create -n dlenv python=3.10
+conda activate dlenv 
 # in the it3103env
 conda install pip
 ```
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 ## Run the Flask application
 
-Unzip your activity_model.zip and copy the activity_model folder into the `app` folder of your flask app. The activity_model folder contained the keras saved model. While inside the `app` folder, run the flask using the following: 
+Copy the activity_model.pth  into the `app/model` folder of your flask app. While inside the `app` folder, run the flask using the following: 
 
 ```
 flask run
