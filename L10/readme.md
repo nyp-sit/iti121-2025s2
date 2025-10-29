@@ -11,7 +11,7 @@ If you already have Anaconda or Miniconda installed, create a conda environment 
 ```python
 conda create -n dlenv python=3.10
 conda activate dlenv 
-# in the it3103env
+# in the virtual environment
 conda install pip
 ```
 
