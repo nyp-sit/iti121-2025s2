@@ -144,7 +144,7 @@ Change directory to the following:
 
 `label-studio-ml-backend/label_studio_ml/examples/grounding_dino` 
 
-Locate the file `docker-compose.yaml` and change the following two lines
+Locate the file `docker-compose.yml` and change the following two lines
 ```
 - LABEL_STUDIO_HOST=https://app.heartex.com/
 - LABEL_STUDIO_ACCESS_TOKEN=your_access_token
