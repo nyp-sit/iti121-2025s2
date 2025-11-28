@@ -200,10 +200,13 @@ TEXT_THRESHOLD=0.25
 
 and the run the docker by typing the following command: 
 
-```bash
-docker run docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-master
+```powershell
+docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-windows
 ```
 
+```bash
+docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-macos
+```
 
 # Integrate Label Studio with Machine Learning Backend 
 
