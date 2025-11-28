@@ -1,5 +1,7 @@
 # Label Studio 
 
+You can run Label Studio using either Docker container or as a pip-installed package on your computer. 
+
 ## Installation of Label Studio 
 
 
