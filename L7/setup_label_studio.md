@@ -23,7 +23,7 @@ docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/labe
 On Windows, run the following using PowerShell: 
 
 ```
-docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest
+docker run -it -p 8080:8080 -v $(PWD)/mydata:/label-studio/data heartexlabs/label-studio:latest
 ```
 
 This will start Label Studio at http://localhost:8080, and mount the local directory ./mydata into the container, where all labeling data will be stored. 
