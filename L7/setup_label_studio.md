@@ -200,9 +200,13 @@ TEXT_THRESHOLD=0.25
 
 and the run the docker by typing the following command: 
 
+For Windows, use the following docker image:
+
 ```powershell
 docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-windows
 ```
+
+For MacOS (silicon), use the following docker image: 
 
 ```bash
 docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-macos
