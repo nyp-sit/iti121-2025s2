@@ -11,13 +11,16 @@ You can run Label Studio using either Docker container or as a pip-installed pac
 
 You can use Docker to run Label Studio. Make sure you have Docker (desktop) installed on your machine.
 
-On Linux: 
+Before running the docker, decides on the directory you want to use for storing the data in Label Studio.  Change to that directory. 
+The following docker container will map a subdirectory call mydata in the chosen directory to be used as data directory within the container. 
+
+On Linux or MacOS: 
 
 ```bash
 docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest
 ```
 
-On Windows, modify the path for `-v` accordingly using Windows path convention.
+On Windows, run the following using PowerShell: 
 
 ```
 docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest
