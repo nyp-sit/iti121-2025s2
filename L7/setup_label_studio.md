@@ -100,7 +100,19 @@ In the Labelling UI setup, choose `Code` option and paste the following into the
 
 ```
 
-The TextArea is required as we will be connecting Label Studio to the backend ML model Grounding Dino for auto-labelling to ease your labelling job. Grounding Dino is a zero-shot object detection model. 
+If you have more than one object class, you can just add additional label like below: 
+
+```xml
+....
+  <RectangleLabels name="label" toName="image">
+    <Label value="goldfish" background="yellow"/>
+    <Label value="prawn" background="blue"/>
+  </RectangleLabels>
+....
+
+```
+
+The TextArea is required as we will be connecting Label Studio to the backend ML model Grounding Dino for auto-labelling, by using text prompt, to ease your labelling job. Grounding Dino is a zero-shot object detection model. 
 
 Click *Save* to save the Labelling UI. 
 
@@ -258,6 +270,31 @@ Togge the accept button to accept the suggested annotation (alternatively you ca
 The bounding box will change to solid color (in this case our label color is green) and you can then click Submit button to submit the labelling to complete the labelling process for this image. 
 
 ![final result](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/final_result.png?raw=True)
+
+# Export
+
+After you finished annotating, you can export the data.  Unfortunately, Label Studio does not support exporting to Ultralytics YOLO11 format. You can choose to export as **YOLO with Images**, and then reorganize the files into train and validate (and optionally test) folders, and to create a data.yaml file to provide information about the folder location of test and validation set:
+
+<root folder>
+--train
+----images
+----labels
+--valid
+----images
+----labels
+data.yaml
+  
+
+The data.yaml file should specify the following:
+
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+names:
+    0: goldfish
+
+You can then zip up the entire folder and upload to Google Colab and unzip back into the same folder structure, ready for training. 
 
 
 
