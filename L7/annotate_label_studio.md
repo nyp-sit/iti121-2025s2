@@ -95,25 +95,29 @@ The TextArea is required as we will be connecting Label Studio to the backend ML
 
 Click *Save* to save the Labelling UI. 
 
-# Machine Learning Backend
+## Machine Learning Backend
 
 [Grounding Dino](https://github.com/IDEA-Research/GroundingDINO) is is a zero-shot object detection model. We can use the model to help us annotate our images. 
 
-To integrate with Grounding Dino, you will need to setup the ML backend with the Grounding Dino model.  
-
-Change the following line in the `docker-compose.yml, and replace with your actual legacy token you created earlier. 
+Before we can run the ML backend, we need to change the following line in the `docker-compose.yml, and replace with your actual legacy token you created earlier. 
 ```
 - LABEL_STUDIO_ACCESS_TOKEN=your_access_token
 ```
 
-# Integrate Label Studio with Machine Learning Backend 
+Now start the ML backend by typing: 
+
+```powershell
+docker-compose up -d grnddino
+```
+
+### Integrate Label Studio with Machine Learning Backend 
 
 Open the project in Label Studio, and click "settings" on the top right corner.
 
 ![project_setting](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/project_settings.png?raw=true)
 
 
-## Model Setting 
+### Model Setting 
 
 In *Model* setting, click "Connect Model", and in the setting page, enter the name, and URL of the backend ML (i.e. `http://grnddino:9090`) ,and toggle on interactive preannotations.  
 
@@ -125,17 +129,16 @@ Click Validate and Save. There should not be any error and you should see that t
 
 ![model status](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/model_connected_status.png?raw=true)
 
-## Annotation Settings
+### Annotation Settings
 
 Now navigate to *Annotation*. In *Annotation* settings, toggle on *Use predictions to prelabel tasks* and select "grounding dino" model as the prediction model. 
 
 ![annotation settings](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/annotation_settings.png?raw=true)
 
 
-# Auto-Labelling using Grounding Dino
+### Auto-Labelling using Grounding Dino
 
 Now you can try out the auto-labelling using Grounding Dino you setup earlier. Open the Project and select any image to label.  
-
 
 ![prompt](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/prompt.png?raw=true)
 
