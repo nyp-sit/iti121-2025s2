@@ -1,66 +1,45 @@
-# Label Studio 
+# Annotate using Label Studio and Grounding Dino
 
-You can run Label Studio using either Docker container or as a pip-installed package on your computer. 
-
-## Installation of Label Studio 
-
-
-### Docker 
-
-#### Pre-requisites
-
-You can use Docker to run Label Studio. Make sure you have Docker (desktop) installed on your machine.
-
-Before running the docker, decides on the directory you want to use for storing the data in Label Studio.  Change to that directory. 
-The following docker container will map a subdirectory call mydata in the chosen directory to be used as data directory within the container. 
-
-On Linux or MacOS: 
-
-```bash
-docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest
-```
-
-On Windows, run the following using PowerShell: 
-
-```
-docker run -it -p 8080:8080 -v $(PWD)/mydata:/label-studio/data heartexlabs/label-studio:latest
-```
-
-This will start Label Studio at http://localhost:8080, and mount the local directory ./mydata into the container, where all labeling data will be stored. 
-
-
-
-### Pip install 
-
-Install Label Studio in a clean Python environment. You can either create a virtual environment using venv or conda to reduce the likelihood of package conflicts or missing packages.
-
-```bash
-python3 -m venv env
-source env/bin/activate
-python -m pip install label-studio
-```
-
-or 
-
-```bash
-conda create -n env
-conda activate env 
-python -m pip install label-studio
-```
-
-After install, you can start the Label Studio server by using the following command: 
-
-```bash 
-label-studio
-```
-
-The default web browser will automatically open at http://localhost:8080 with Label Studio
-
-
-### Other options 
-
+In this guide, we will only describe how to run the Label Studio and the ML backend (Grounding Dino) as docker containers. 
 Please refer to `https://labelstud.io/guide/install.html' for more install options. 
 
+## Pre-requisites
+
+Download the docker-compose.yml file to a chosen directory which you will use to store data from Label Studio and the ML backend.  Change to that directory. 
+
+## Label Studio
+
+Start the Label Studio docker container first by doing the following: 
+
+```bash
+docker-compose up -d labelstudio
+```
+
+This will start Label Studio at http://localhost:8080, and mount the local directory ./label-studio-data into the container, where all labeling data will be stored.
+
+## Create Access Token
+
+### Enable Legacy Tokens 
+
+You need to create an access token for ML backend to access the images stored in Label Studio.  
+
+Click on the Label Studio home icon and click Organization to go to organization page:
+
+![organization](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/organization.png?raw=true)
+
+and then click on API Token Settings and enable Legacy Tokens: 
+
+![api token setting](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/api_token_settings.png?raw=true)
+
+Save the changes. 
+
+### Create legacy tokens
+
+Now go to your Accounts & Settings (found on the top right corner), then navigate to Legacy Token to create a token: 
+
+![legacy token](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/legacy_token.png?raw=true)
+
+Copy the token to be used later when you are setting up the ML backend. 
 
 ## Create Annotation Project 
 
@@ -116,29 +95,7 @@ The TextArea is required as we will be connecting Label Studio to the backend ML
 
 Click *Save* to save the Labelling UI. 
 
-## Create Access Token
 
-### Enable Legacy Tokens 
-
-You need to create an access token for ML backend to access the images stored in Label Studio.  
-
-Click on the Label Studio home icon and click Organization to go to organization page:
-
-![organization](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/organization.png?raw=true)
-
-and then click on API Token Settings and enable Legacy Tokens: 
-
-![api token setting](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/api_token_settings.png?raw=true)
-
-Save the changes. 
-
-### Create legacy tokens
-
-Now go to your Accounts & Settings (found on the top right corner), then navigate to Legacy Token to create a token: 
-
-![legacy token](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/legacy_token.png?raw=true)
-
-Copy the token to be used later when you are setting up the ML backend. 
 
 
 # Machine Learning Backend
