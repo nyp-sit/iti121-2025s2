@@ -95,102 +95,27 @@ The TextArea is required as we will be connecting Label Studio to the backend ML
 
 Click *Save* to save the Labelling UI. 
 
-
-
-
 # Machine Learning Backend
 
 [Grounding Dino](https://github.com/IDEA-Research/GroundingDINO) is is a zero-shot object detection model. We can use the model to help us annotate our images. 
 
 To integrate with Grounding Dino, you will need to setup the ML backend with the Grounding Dino model.  
 
-## Installation of ML backend
-
-There is a bug in the ML backend integration with Grounding Dino, in that model returns predictions as numpy type float32, and the backend is trying to jsonify the predictions, which causes the backend to crash, as numpy array cannot be serialize. I have done a quick fix, and you can check out the main branch from https://github.com/khengkok/label-studio-ml-backend.git
-
-### Build a ML Backend Docker container 
-
-You will need to build a docker container image. 
-
-First git checkout the codebase from this [link](https://github.com/khengkok/label-studio-ml-backend.git).
-
-Change directory to the following: 
-
-`label-studio-ml-backend/label_studio_ml/examples/grounding_dino` 
-
-Locate the file `docker-compose.yml` and change the following two lines
+Change the following line in the `docker-compose.yml, and replace with your actual legacy token you created earlier. 
 ```
-- LABEL_STUDIO_HOST=https://app.heartex.com/
 - LABEL_STUDIO_ACCESS_TOKEN=your_access_token
-```
-
-Replace the url to point to your Label Studio url, for example: https://192.168.100.100:8080.  You CANNOT use localhost in the url. To find the local ip address of your machine, you can either use `ipconfig` (on MacOS, Windows), or `ip addr show` (for linux). 
-
-Replace the Access token with the legacy token you created earlier in Label Studio. 
-
-
-Now build the docker using the following command at the command prompt:
-
-```bash
-docker-compose build
-```
-
-the build will take a while, if this is the first time the docker image is built. After the build complete, run the following command to start the docker: 
-
-```bash 
-docker-compose up
-```
-
-Now the ML backend server is started and listen on port 9090. 
-
-
-### Change of IP address
-
-If your ip address changes (which happens when you connect your laptop to different wifi), you can update the ip address in the docker-compose.yaml and just stop the current container (CTRL-C) and restart the container using `docker-compose up`. 
-
-
-### (Alternative) Run the pre-built docker directly
-
-You can also run a pre-built docker directly.  First you need to create an environment file that contains the following environment variables: 
-
-```
-MODEL_DIR=/data/models
-WORKERS=2
-THREADS=4
-LOG_LEVEL=DEBUG
-
-# change the following to your local ip address
-LABEL_STUDIO_HOST=http://<YOUR IP>:8080
-# change the following to the access token you created in label studio
-LABEL_STUDIO_ACCESS_TOKEN=<YOUR TOKEN>
-BOX_THRESHOLD=0.30
-TEXT_THRESHOLD=0.25
-```
-
-and the run the docker by typing the following command: 
-
-For Windows, use the following docker image:
-
-```powershell
-docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-windows
-```
-
-For MacOS (silicon), use the following docker image: 
-
-```bash
-docker run --env-file ./app.env  -v ./data/server:/data -p 9090:9090 ainyp/label-studio-ml-backend:grnddino-macos
 ```
 
 # Integrate Label Studio with Machine Learning Backend 
 
-Open the project, and click "settings" on the top right corner.
+Open the project in Label Studio, and click "settings" on the top right corner.
 
 ![project_setting](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/project_settings.png?raw=true)
 
 
 ## Model Setting 
 
-In *Model* setting, click "Connect Model", and in the setting page, enter the name, and URL of the backend ML, and toggle on interactive preannotations.  
+In *Model* setting, click "Connect Model", and in the setting page, enter the name, and URL of the backend ML (i.e. `http://grnddino:9090`) ,and toggle on interactive preannotations.  
 
 For example: 
 
