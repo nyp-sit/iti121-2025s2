@@ -156,10 +156,11 @@ The bounding box will change to solid color (in this case our label color is gre
 
 ![final result](https://github.com/nyp-sit/iti121-2025s2/blob/main/L7/assets/final_result.png?raw=True)
 
-# Export
+### Export
 
 After you finished annotating, you can export the data.  Unfortunately, Label Studio does not support exporting to Ultralytics YOLO11 format. You can choose to export as **YOLO with Images**, and then reorganize the files into train and validate (and optionally test) folders, and to create a data.yaml file to provide information about the folder location of test and validation set:
 
+```
 <root folder>
 --train
 ----images
@@ -168,16 +169,18 @@ After you finished annotating, you can export the data.  Unfortunately, Label St
 ----images
 ----labels
 data.yaml
-  
+```  
 
 The data.yaml file should specify the following:
 
+```
 train: ../train/images
 val: ../valid/images
 test: ../test/images
 
 names:
     0: goldfish
+```
 
 You can then zip up the entire folder and upload to Google Colab and unzip back into the same folder structure, ready for training. 
 
