@@ -1,0 +1,34 @@
+services:
+  labelstudio:
+    image: ainyp/label-studio:macos
+    container_name: labelstudio
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./labelstudio_data:/label-studio/data
+    networks:
+      app_network:
+        ipv4_address: 172.25.0.10
+    profiles:
+      - labelstudio
+
+  grnddino:
+    image: ainyp/label-studio-ml-backend:grnddino-macos
+    container_name: grnddino
+    env_file:
+      - app.env
+    volumes:
+      - ./grnddino_data:/data
+    networks:
+      app_network:
+        ipv4_address: 172.25.0.11
+    profiles:
+      - grnddino
+    # No ports exposed to host
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
