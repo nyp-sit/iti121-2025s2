@@ -185,6 +185,20 @@ names:
 You can then zip up the entire folder and upload to Google Colab and unzip back into the same folder structure, ready for training. 
 
 
+## Shutdown docker contains 
+
+you can shutdown both containers all at one by: 
+
+```bash
+docker-compose down
+```
+
+After the initial setup, the next time you can just start all containers at once by:
+
+```bash
+docker-compose up
+```
+
 
 
 
