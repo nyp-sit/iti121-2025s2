@@ -15,6 +15,8 @@ services:
   grnddino:
     image: ainyp/label-studio-ml-backend:grnddino
     container_name: grnddino
+    ports: 
+      - "9090:9090"
     env_file:
       - app.env
     volumes:
@@ -22,6 +24,19 @@ services:
     networks:
       app_network:
         ipv4_address: 172.25.0.11
+    environment:
+      - MODEL_DIR=/data/models
+      - WORKERS=2
+      - THREADS=4
+      - LOG_LEVEL=DEBUG
+
+      # Add these variables if you want to access the images stored in Label Studio
+      - LABEL_STUDIO_HOST=http://172.25.0.10:8080
+      - LABEL_STUDIO_ACCESS_TOKEN=85f97865a10653a68be823f210c894799c48c88a
+      - BOX_THRESHOLD=0.30
+      - TEXT_THRESHOLD=0.25
+    # Uncomment the following lines if you want to use GPU
+    # - NVIDIA_VISIBLE_DEVICES=all
     profiles:
       - grnddino
     # No ports exposed to host
