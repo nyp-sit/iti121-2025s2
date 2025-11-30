@@ -1,6 +1,6 @@
 services:
   labelstudio:
-    image: ainyp/label-studio:macos
+    image: ainyp/label-studio:latest
     container_name: labelstudio
     ports:
       - "8080:8080"
@@ -13,7 +13,7 @@ services:
       - labelstudio
 
   grnddino:
-    image: ainyp/label-studio-ml-backend:grnddino-macos
+    image: ainyp/label-studio-ml-backend:grnddino
     container_name: grnddino
     env_file:
       - app.env
