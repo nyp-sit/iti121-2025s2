@@ -9,16 +9,12 @@ services:
     networks:
       app_network:
         ipv4_address: 172.25.0.10
-    profiles:
-      - labelstudio
 
   grnddino:
     image: ainyp/label-studio-ml-backend:grnddino
     container_name: grnddino
     ports: 
       - "9090:9090"
-    env_file:
-      - app.env
     volumes:
       - ./grnddino_data:/data
     networks:
@@ -37,8 +33,6 @@ services:
       - TEXT_THRESHOLD=0.25
     # Uncomment the following lines if you want to use GPU
     # - NVIDIA_VISIBLE_DEVICES=all
-    profiles:
-      - grnddino
     # No ports exposed to host
 
 networks:
