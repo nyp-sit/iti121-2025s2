@@ -2,6 +2,7 @@ services:
   labelstudio:
     image: ainyp/label-studio:latest
     container_name: labelstudio
+    user: "0"
     ports:
       - "8080:8080"
     volumes:
@@ -27,8 +28,8 @@ services:
       - LOG_LEVEL=DEBUG
 
       # Add these variables if you want to access the images stored in Label Studio
-      - LABEL_STUDIO_HOST=http://172.25.0.10:8080
-      - LABEL_STUDIO_ACCESS_TOKEN=85f97865a10653a68be823f210c894799c48c88a
+      - LABEL_STUDIO_HOST=http://192.168.200.10:8080
+      - LABEL_STUDIO_ACCESS_TOKEN=<<change to your legacy token>>
       - BOX_THRESHOLD=0.30
       - TEXT_THRESHOLD=0.25
     # Uncomment the following lines if you want to use GPU
