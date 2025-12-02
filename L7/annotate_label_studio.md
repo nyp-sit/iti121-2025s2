@@ -5,14 +5,14 @@ Please refer to `https://labelstud.io/guide/install.html' for more install optio
 
 ## Pre-requisites
 
-Download the docker-compose.yml file to a chosen directory which you will use to store data from Label Studio and the ML backend.  Change to that directory. 
+Download the podman compose.yml file to a chosen directory which you will use to store data from Label Studio and the ML backend.  Change to that directory. 
 
 ## Label Studio
 
 Start the Label Studio docker container first by doing the following: 
 
 ```bash
-docker-compose up -d labelstudio
+podman compose up -d labelstudio
 ```
 
 This will start Label Studio at http://localhost:8080, and mount the local directory ./label-studio-data into the container, where all labeling data will be stored.
@@ -99,7 +99,7 @@ Click *Save* to save the Labelling UI.
 
 [Grounding Dino](https://github.com/IDEA-Research/GroundingDINO) is is a zero-shot object detection model. We can use the model to help us annotate our images. 
 
-Before we can run the ML backend, we need to change the following line in the `docker-compose.yml, and replace with your actual legacy token you created earlier. 
+Before we can run the ML backend, we need to change the following line in the `podman compose.yml, and replace with your actual legacy token you created earlier. 
 ```
 - LABEL_STUDIO_ACCESS_TOKEN=your_access_token
 ```
@@ -107,7 +107,7 @@ Before we can run the ML backend, we need to change the following line in the `d
 Now start the ML backend by typing: 
 
 ```powershell
-docker-compose up -d grnddino
+podman compose up -d grnddino
 ```
 
 ### Integrate Label Studio with Machine Learning Backend 
@@ -190,13 +190,13 @@ You can then zip up the entire folder and upload to Google Colab and unzip back 
 you can shutdown both containers all at one by: 
 
 ```bash
-docker-compose down
+podman compose down
 ```
 
 After the initial setup, the next time you can just start all containers at once by:
 
 ```bash
-docker-compose up
+podman compose up
 ```
 
 
