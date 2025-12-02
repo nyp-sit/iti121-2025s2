@@ -8,7 +8,7 @@ services:
       - ./labelstudio_data:/label-studio/data
     networks:
       app_network:
-        ipv4_address: 172.25.0.10
+        ipv4_address: 192.168.200.10
 
   grnddino:
     image: ainyp/label-studio-ml-backend:grnddino
@@ -19,7 +19,7 @@ services:
       - ./grnddino_data:/data
     networks:
       app_network:
-        ipv4_address: 172.25.0.11
+        ipv4_address: 192.168.200.11
     environment:
       - MODEL_DIR=/data/models
       - WORKERS=2
@@ -40,4 +40,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.25.0.0/16
+        - subnet: 192.168.200.0/24
