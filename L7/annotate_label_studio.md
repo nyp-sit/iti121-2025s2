@@ -5,7 +5,13 @@ Please refer to `https://labelstud.io/guide/install.html' for more install optio
 
 ## Pre-requisites
 
-Download the podman compose.yml file to a chosen directory which you will use to store data from Label Studio and the ML backend.  Change to that directory. 
+Download the docker-compose.yml file to a chosen directory which you will use to store data from Label Studio and the ML backend.  Change to that directory (e.g. c:\mydata on windows), and create two subdirectory:  `labelstudio_data` and `grnddino_data`. 
+
+```powershell
+cd c:\mydata
+mkdir labelstudio_data
+mkdir grnddino_data
+```
 
 ## Label Studio
 
