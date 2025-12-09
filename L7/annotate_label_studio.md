@@ -105,7 +105,7 @@ Click *Save* to save the Labelling UI.
 
 [Grounding Dino](https://github.com/IDEA-Research/GroundingDINO) is is a zero-shot object detection model. We can use the model to help us annotate our images. 
 
-Before we can run the ML backend, we need to change the following line in the `podman compose.yml, and replace with your actual legacy token you created earlier. 
+Before we can run the ML backend, we need to change the following line in the `docker-compose.yml, and replace with your actual legacy token you created earlier. 
 ```
 - LABEL_STUDIO_ACCESS_TOKEN=your_access_token
 ```
