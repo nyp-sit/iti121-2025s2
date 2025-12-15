@@ -9,7 +9,7 @@ We will use flask server to host the activity recognition model that we train. T
 If you already have Anaconda or Miniconda installed, create a conda environment by typing the following at the Anaconda prompt:
 
 ```python
-conda create -n dlenv python=3.10
+conda create -n dlenv python=3.12
 conda activate dlenv 
 # in the virtual environment
 conda install pip
@@ -20,7 +20,7 @@ conda install pip
 Install the necessary packages using the requirements.txt file. 
 
 ```python
-# inside the git repo it3103/week15 directory 
+# inside the git repo iti121-2025s2/L10 directory 
 pip install -r requirements.txt 
 ```
 
