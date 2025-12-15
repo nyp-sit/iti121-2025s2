@@ -36,9 +36,11 @@ elif torch.mps.is_available():
 else:
     device = 'cpu'
     
-model_name = "activity_model.pth"
+model_name = "activity_model_ts.pt"
 model_path = os.path.join(model_dir, model_name)
-model = torch.load('activity_model.pth', weights_only=False).to(device)
+model = torch.jit.load(model_path, map_location=device)
+
+model.eval()
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -46,7 +48,7 @@ def predict():
     json_data = request.get_json()
     x_str = json_data['instances']
     X = torch.tensor(np.array(x_str), dtype=torch.float32).to(device)
-    pred = model(X).detach(cpu().
+    pred = model(X).detach().cpu().numpy()
     print(pred[0])
     index = np.argmax(pred[0])
     if pred[0][index] < 0.6:
@@ -54,7 +56,6 @@ def predict():
     else:
         activity = labels[index]
     return Response(activity)
-
 
 
 #------------------------------------------------------------------------------
