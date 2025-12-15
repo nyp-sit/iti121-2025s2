@@ -48,12 +48,14 @@ def predict():
     json_data = request.get_json()
     x_str = json_data['instances']
     X = torch.tensor(np.array(x_str), dtype=torch.float32).to(device)
-    pred = model(X).detach().cpu().numpy()
-    print(pred[0])
+    logits = model(X)
+    pred = torch.softmax(logits, dim=1).detach().cpu().numpy()
+    # print(pred[0])
     index = np.argmax(pred[0])
-    if pred[0][index] < 0.6:
-        activity = "UNKNOWN"
+    if pred[0][index] < 0.97:
+        activity = ""
     else:
+        # print(pred[0][index])
         activity = labels[index]
     return Response(activity)
 
